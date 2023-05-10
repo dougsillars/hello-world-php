@@ -1,16 +1,23 @@
-# PHP Sample App using Composer
+# PHP Sample App using PHP Built-in Webserver
 
-This sample is a Composer app that serves a PHP app with the PHP built-in web
-server. `--env BP_PHP_WEB_DIR=htdocs` is specified in the build call to tell
+The app contains a
+[project.toml](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/)
+file, which is used here to [pass environment
+variables](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/#specify-buildpacks-and-envs)
+The `BP_PHP_WEB_DIR` environment variable is set in this file to indicate to
 the server where to find files to serve.
+
+The alternative to using a `project.toml` file in an application to specify
+environment variables is to set the environment variable in the build command.
+With the Pack CLI, this would involve setting `--env BP_PHP_WEB_DIR=htdocs`.
 
 ## Building
 
-`pack build php-composer-sample --env BP_PHP_WEB_DIR=htdocs --buildpack paketo-buildpacks/php`
+`pack build php-builtin-server-sample --buildpack paketo-buildpacks/php`
 
 ## Running
 
-`docker run --interactive --tty --env PORT=8080 --publish 8080:8080 php-composer-sample`
+`docker run --interactive --tty --env PORT=8080 --publish 8080:8080 php-builtin-server-sample`
 
 ## Viewing
 
