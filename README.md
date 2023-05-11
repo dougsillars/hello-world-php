@@ -1,23 +1,15 @@
-# PHP Sample App using PHP Built-in Webserver
+# PHP Sample App With Extensions Loaded Via Custom `.ini` Snippet
 
-The app contains a
-[project.toml](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/)
-file, which is used here to [pass environment
-variables](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/#specify-buildpacks-and-envs)
-The `BP_PHP_WEB_DIR` environment variable is set in this file to indicate to
-the server where to find files to serve.
-
-The alternative to using a `project.toml` file in an application to specify
-environment variables is to set the environment variable in the build command.
-With the Pack CLI, this would involve setting `--env BP_PHP_WEB_DIR=htdocs`.
+This app loads PHP extensions via a custom PHP `.ini` snippet located inside
+the `.php.ini.d` directory. It runs with the built-in PHP server.
 
 ## Building
 
-`pack build php-builtin-server-sample --buildpack paketo-buildpacks/php`
+`pack build php-extension-sample --buildpack paketo-buildpacks/php`
 
 ## Running
 
-`docker run --interactive --tty --env PORT=8080 --publish 8080:8080 php-builtin-server-sample`
+`docker run --interactive --tty --env PORT=8080 --publish 8080:8080 php-extension-sample`
 
 ## Viewing
 
